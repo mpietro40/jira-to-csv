@@ -27,14 +27,18 @@ This is requested to enable html removal from Jira Fields
 <h2>WORK IN PROGRESS</h2>
 # Jira CSV Exporter package creator
 
-## How to Use
+<h2>## How to Use</h2>h2>
+You have to create your own .exe file (Github has a limit of 25MB)
+<ul>Move to the folder where you doanloaded this code</ul>
+<ul>pip install pyinstaller</ul>
+<ul>pyinstaller --clean jira_exporter.spec --log-level DEBUG</ul>
 
-1. Double-click `JiraCSVExporter.exe` to start the application
+
+1. Double-click `JiraCSVExporter.exe` (folder dist) to start the application
 2. The application will start a web server on http://localhost:5000
 3. Open your web browser and go to http://localhost:5000
 4. Fill in your Jira credentials:
    - Server URL: Your Jira instance URL
-   - Email: Your Jira account email
    - Token: Your API token (generate from Jira settings)
    - JQL Query: Your search query
 5. Click "Export to CSV" and download the results
@@ -45,5 +49,5 @@ This is requested to enable html removal from Jira Fields
 
 ## Troubleshooting
 - If port 5000 is busy, the app will show an error
-- Make sure your Jira credentials are correct
+- Make sure your Jira credentials (Access Tocken) are correct
 - Check that your JQL query is valid
