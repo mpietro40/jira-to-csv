@@ -27,11 +27,13 @@ This is requested to enable html removal from Jira Fields
 <h2>WORK IN PROGRESS</h2>
 # Jira CSV Exporter package creator
 
-<h2>## How to Use</h2>h2>
+<h2>## How to Use</h2>
 You have to create your own .exe file (Github has a limit of 25MB)
-<ul>Move to the folder where you doanloaded this code</ul>
-<ul>pip install pyinstaller</ul>
-<ul>pyinstaller --clean jira_exporter.spec --log-level DEBUG</ul>
+<ul>
+   <li></li>Move to the folder where you doanloaded this code</li>
+   <li>pip install pyinstaller</li>
+   <li>pyinstaller --clean jira_exporter.spec --log-level DEBUG</li>
+</ul>
 
 
 1. Double-click `JiraCSVExporter.exe` (folder dist) to start the application
