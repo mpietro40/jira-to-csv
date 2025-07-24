@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jira CSV Exporter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #555;
+        }
+        input[type="text"], input[type="email"], input[type="password"], textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+        textarea {
+            height: 100px;
+            resize: vertical;
+        }
+        .btn {
+            background-color: #007bff;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+        .alert {
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+        .alert-error {
+            background-color: #f8d7da;
+            border: 1px solid #f5c6cb;
+            color: #721c24;
+        }
+        .alert-warning {
+            background-color: #fff3cd;
+            border: 1px solid #ffeaa7;
+            color: #856404;
+        }
+        .help-text {
+            font-size: 12px;
+            color: #666;
+            margin-top: 5px;
+        }
+        .example {
+            background-color: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 5px;
+            padding: 10px;
+            margin-top: 10px;
+            font-family: monospace;
+            font-size: 13px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎯 Jira CSV Exporter</h1>
+        
+        <!-- Flash Messages -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        
+        <form method="POST" action="/export">
+            <div class="form-group">
+                <label for="server_url">Jira Server URL:</label>
+                <input type="text" id="server_url" name="server_url" 
+                       value="your server" required>
+                <div class="help-text">Enter your Jira instance URL (e.g., https://yourcompany.atlassian.net)</div>
+            </div>
+            <!-- not needed anymore -->
+            <!--div class="form-group">
+                <label for="email">Username-DAS:</label>
+                <input type="text" id="email" name="email" 
+                       placeholder="MY DASID" required>
+                <div class="help-text">Your Jira account email</div>
+            </div-->
+            
+            <div class="form-group">
+                <label for="token">Personal Access Token:</label>
+                <input type="password" id="token" name="token" 
+                       placeholder="Enter your Personal Access Token" required>
+                <div class="help-text">
+                    Generate a Personal Access Token in your Jira profile settings
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="jql_query">JQL Query:</label>
+                <textarea id="jql_query" name="jql_query" 
+                          placeholder="Enter your JQL query here..." required></textarea>
+                <div class="help-text">
+                    Enter your JQL (Jira Query Language) query. The results will be processed in chunks of 1000 items.
+                </div>
+                <div class="example">
+                    <strong>Examples:</strong><br>
+                    • project = "MYPROJECT" AND status = "In Progress"<br>
+                    • assignee = currentUser() AND created >= -30d<br>
+                    • project = "ISDOP" AND type = "Feature" AND status = "Doing"
+                </div>
+            </div>
+            
+            <button type="submit" class="btn">🚀 Export to CSV</button>
+        </form>
+        
+        <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #eee; font-size: 14px; color: #666;">
+            <strong>Note:</strong> Large queries will be processed in chunks of 1000 items to avoid overloading the Jira server. 
+            The export will include: Key, Summary, Issue Type, Status, Priority, Assignee, Reporter, Created, Updated, 
+            Resolution, Components, Labels, and Description.
+        </div>
+    </div>
+</body>
+</html>

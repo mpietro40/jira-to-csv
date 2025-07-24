@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Export Complete - Jira CSV Exporter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        h1 {
+            color: #28a745;
+            margin-bottom: 20px;
+        }
+        .success-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        .stats {
+            background-color: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 5px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            margin: 10px;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            color: white;
+        }
+        .btn-secondary {
+            background-color: #6c757d;
+            color: white;
+        }
+        .btn:hover {
+            opacity: 0.8;
+        }
+        .filename {
+            font-family: monospace;
+            background-color: #f8f9fa;
+            padding: 5px 10px;
+            border-radius: 3px;
+            border: 1px solid #e9ecef;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="success-icon">✅</div>
+        <h1>Export Complete!</h1>
+        
+        <div class="stats">
+            <h3>Export Summary</h3>
+            <p><strong>Total Issues Exported:</strong> {{ total_issues }}</p>
+            <p><strong>Filename:</strong> <span class="filename">{{ filename }}</span></p>
+        </div>
+        
+        <div>
+            <a href="/download" class="btn btn-primary">📥 Download CSV File</a>
+            <a href="/" class="btn btn-secondary">🔄 New Export</a>
+        </div>
+        
+        <div style="margin-top: 30px; font-size: 14px; color: #666;">
+            <p>Your CSV file contains all the exported Jira issues with the following fields:</p>
+            <p><em>Key, Summary, Issue Type, Status, Priority, Assignee, Reporter, Created, Updated, Resolution, Components, Labels, Description</em></p>
+        </div>
+    </div>
+</body>
+</html>
