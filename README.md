@@ -3,12 +3,13 @@
 
 This is a web app you can run with python and enable you to connect with your Jira server and retrieve a big amount of items chunking them in 200 elements.
 Than a CSV is created and you can download it.
-Benefits of this solution:
-✅ No Session Size Limits: Files stored on disk, not in cookies
-✅ Better Performance: No memory bloat from large CSV data
-✅ Automatic Cleanup: Old files are automatically removed
-✅ Thread Safety: Multiple users can use the app simultaneously
-✅ Scalable: Can handle very large CSV exports
+<p>
+<b>Benefits of this solution:</b>
+<p>✅ No Session Size Limits: Files stored on disk, not in cookies
+<p>✅ Better Performance: No memory bloat from large CSV data
+<p>✅ Automatic Cleanup: Old files are automatically removed
+<p>✅ Thread Safety: Multiple users can use the app simultaneously
+<p>✅ Scalable: Can handle very large CSV exports
 
 <h2>Improvements</h2>
 <li>Add Chunk size configurable parameter</li>
