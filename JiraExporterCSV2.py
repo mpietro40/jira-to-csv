@@ -24,24 +24,7 @@ from bs4 import BeautifulSoup
 
 app = Flask(__name__)
 app.secret_key = "your-secret-key-change-this"  # Change this to a secure secret key
-"""
-def connect_to_jira(server_url, token):
-    #Establish connection to Jira using Personal Access Token
-    try:
-        # Set up headers with Bearer token authentication
-        headers = JIRA.DEFAULT_OPTIONS["headers"].copy()
-        headers["Authorization"] = f"Bearer {token}"
-        
-        # Create Jira connection
-        jira = JIRA(server=server_url, options={"headers": headers})
-        
-        # Test connection by getting current user
-        current_user = jira.current_user()
-        return jira, None
-        
-    except Exception as e:
-        return None, str(e)
-"""
+
 chunk_size = 200
 # NEW content to create temporary file and delete it
 # Global dictionary to store temporary files
